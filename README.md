@@ -1,61 +1,102 @@
-# Template Extension Specification
+# Sentinel-5P Extension Specification
 
-- **Title:** Template
-- **Identifier:** <https://stac-extensions.github.io/template/v1.0.0/schema.json>
-- **Field Name Prefix:** template
-- **Scope:** Item, Collection
+- **Title:** Sentinel-5P
+- **Identifier:** <https://stac-extensions.github.io/sentinel-5p/v1.0.0/schema.json>
+- **Field Name Prefix:** s5p
+- **Scope:** Item
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
-- **Owner**: @your-gh-handles @person2
+- **Owner**: @m-mohr
 
-This document explains the Template Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
-This is the place to add a short introduction.
+This document explains the Sentinel-5P Extension to the
+[SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
+
+The intention of the first version of the specification is to define the existing behavior of
+the properties prefixed with `s5p` as created by the
+[stactools-sentinel5p](https://github.com/stactools-packages/sentinel5p) package and used by
+[Microsoft Planetary Computer](https://planetarycomputer.microsoft.com/api/stac/v1). Future versions
+will aspire to standardize fields such as the numerous coverage calculations into separate extensions that are not specific to Sentinel-5P.
 
 - Examples:
-  - [Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item
-  - [Collection example](examples/collection.json): Shows the basic usage of the extension in a STAC Collection
-- [JSON Schema](json-schema/schema.json)
-- [Changelog](./CHANGELOG.md)
+  - [Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item (todo)
+  - [Collection example](examples/collection.json): Shows the basic usage of the extension in a STAC Collection (todo)
+- [JSON Schema](json-schema/schema.json) (todo)
+- [Changelog](./CHANGELOG.md) (todo)
 
 ## Fields
 
 The fields in the table below can be used in these parts of STAC documents:
 
 - [ ] Catalogs
-- [x] Collections
+- [ ] Collections
 - [x] Item Properties (incl. Summaries in Collections)
-- [x] Assets (for both Collections and Items, incl. Item Asset Definitions in Collections)
+- [ ] Assets (for both Collections and Items, incl. Item Asset Definitions in Collections)
 - [ ] Links
 
-| Field Name           | Type                      | Description                                  |
-| -------------------- | ------------------------- | -------------------------------------------- |
-| template:new_field   | string                    | **REQUIRED**. Describe the required field... |
-| template:xyz         | [XYZ Object](#xyz-object) | Describe the field...                        |
-| template:another_one | \[number]                 | Describe the field...                        |
+| Field Name                | Type          | Description                                                  |
+| ------------------------- | ------------- | ------------------------------------------------------------ |
+| s5p:product_name          | string        | One of: `aer-ai`, `aer-lh`, `ch4`, `cloud`, `co`, `hcho`, `no2`, `np-bd3`, `np-bd6`, `np-bd7`, `o3`, `o3-tcl`, `so2` |
+| s5p:product_type          | string        | One of: `L2__AER_AI`, `L2__AER_LH`, `L2__CH4___`, `L2__CLOUD_`, `L2__CO____`, `L2__HCHO__`, `L2__NO2___`, `L2__NP_BD3`, `L2__NP_BD6`, `L2__NP_BD7`, `L2__O3_TCL`, `L2__O3____`, `L2__SO2___` |
+| s5p:processing_mode       | string        | One of: `NRTI`, `OFFL`, `RPRO`                               |
+| s5p:collection_identifier | string        | One of: `01`, `02`, `03`                                     |
+| s5p:spatial_resolution    | [number]      |                                                              |
+| s5p:shape                 | [integer]     | **DEPRECATED** Use proj:shape instead                        |
+| s5p:aer_ai                | Aer Ai Object | Only for products with name `aer-ai`                         |
+| s5p:aer_lh                | Aer Lh Object | Only for products with name `aer-lh`                         |
+| s5p:ch4                   | CH4 Object    | Only for products with name `ch4`                            |
+| s5p:cloud                 | Cloud Object  | Only for products with name `cloud`                          |
+| s5p:co                    | CO            | Only for products with name `co`                             |
+| s5p:hcho                  | HCHO Object   | Only for products with name `hcho`                           |
+| s5p:no2                   | NO2 Object    | Only for products with name `no2`                            |
+| s5p:npbd3                 | NPBD Object   | Only for products with name `np-bd3`                         |
+| s5p:npbd6                 | NPBD Object   | Only for products with name `np-bd6`                         |
+| s5p:npbd7                 | NPBD Object   | Only for products with name `np-bd7`                         |
+| s5p:o3                    | O2 Object     | Only for products with name `o3`                             |
+| s5p:o3_tcl                | O3 TCL Object | Only for products with name `o3-tcl`                         |
+| s5p:so2                   | SO2 Object    | Only for products with name `so2`                            |
 
-### Additional Field Information
+### Object for Aer Ai
 
-#### template:new_field
+| Field Name                 | Type    | Description |
+| -------------------------- | ------- | ----------- |
+| input_band                 | string  |             |
+| irradiance_accompanied     | string  |             |
+| geolocation_grid_from_band | integer |             |
 
-This is a much more detailed description of the field `template:new_field`...
+### Object for NO2 / CO / Aer Lh / CH4
 
-### XYZ Object
+| Field Name                 | Type     | Description |
+| -------------------------- | -------- | ----------- |
+| input_band                 | [string] |             |
+| irradiance_accompanied     | string   |             |
+| geolocation_grid_from_band | integer  |             |
 
-This is the introduction for the purpose and the content of the XYZ Object...
+### Object for O3 / SO2 / Cloud / HCHO
 
-| Field Name | Type   | Description                                  |
-| ---------- | ------ | -------------------------------------------- |
-| x          | number | **REQUIRED**. Describe the required field... |
-| y          | number | **REQUIRED**. Describe the required field... |
-| z          | number | **REQUIRED**. Describe the required field... |
+| Field Name                 | Type    | Description |
+| -------------------------- | ------- | ----------- |
+| cloud_mode                 | string  |             |
+| geolocation_grid_from_band | integer |             |
 
-## Relation types
+### Object for O3 TCL
 
-The following types should be used as applicable `rel` types in the
-[Link Object](https://github.com/radiantearth/stac-spec/tree/master/item-spec/item-spec.md#link-object).
+| Field Name                  | Type      | Description                                                  |
+| --------------------------- | --------- | ------------------------------------------------------------ |
+| shape_ccd                   | [integer] |                                                              |
+| shape_csa                   | [integer] |                                                              |
+| stratosphere_start_datetime | string    | RFC3339 datetime in UTC                                      |
+| stratosphere_end_datetime   | string    | RFC3339 datetime in UTC                                      |
+| troposphere_start_datetime  | string    | RFC3339 datetime in UTC                                      |
+| troposphere_end_datetime    | string    | RFC3339 datetime in UTC                                      |
+| input_orbits                | [integer] |                                                              |
+| input_files                 | [string]  | List of product IDs, e.g. `S5P_OFFL_L2__O3_____20200303T114449_20200303T132620_12373_01_010107_20200306T170003` |
 
-| Type           | Description                           |
-| -------------- | ------------------------------------- |
-| fancy-rel-type | This link points to a fancy resource. |
+### Object for NPBD
+
+| Field Name           | Type      | Description |
+| -------------------- | --------- | ----------- |
+| analysed_s5p_band    | integer   |             |
+| VIIRS_band           | [integer] |             |
+| number_of_scaled_fov | integer   |             |
 
 ## Contributing
 
