@@ -16,11 +16,9 @@ the properties prefixed with `s5p` as created by the
 [Microsoft Planetary Computer](https://planetarycomputer.microsoft.com/api/stac/v1). Future versions
 will aspire to standardize fields such as the numerous coverage calculations into separate extensions that are not specific to Sentinel-5P.
 
-- Examples:
-  - [Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item (todo)
-  - [Collection example](examples/collection.json): Shows the basic usage of the extension in a STAC Collection (todo)
-- [JSON Schema](json-schema/schema.json) (todo)
-- [Changelog](./CHANGELOG.md) (todo)
+- [Examples](examples/)
+- [JSON Schema](json-schema/schema.json)
+- [Changelog](./CHANGELOG.md)
 
 ## Fields
 
@@ -34,8 +32,8 @@ The fields in the table below can be used in these parts of STAC documents:
 
 | Field Name                | Type          | Description                                                  |
 | ------------------------- | ------------- | ------------------------------------------------------------ |
-| s5p:product_name          | string        | One of: `aer-ai`, `aer-lh`, `ch4`, `cloud`, `co`, `hcho`, `no2`, `np-bd3`, `np-bd6`, `np-bd7`, `o3`, `o3-tcl`, `so2` |
-| s5p:product_type          | string        | One of: `L2__AER_AI`, `L2__AER_LH`, `L2__CH4___`, `L2__CLOUD_`, `L2__CO____`, `L2__HCHO__`, `L2__NO2___`, `L2__NP_BD3`, `L2__NP_BD6`, `L2__NP_BD7`, `L2__O3_TCL`, `L2__O3____`, `L2__SO2___` |
+| s5p:product_name          | string        | One of: `aer-ai`, `aer-lh`, `ch4`, `cloud`, `co`, `hcho`, `no2`, `np-bd3`, `np-bd6`, `np-bd7`, `o3`, `o3-tcl`, `so2`, ... |
+| s5p:product_type          | string        | One of: `L2__AER_AI`, `L2__AER_LH`, `L2__CH4___`, `L2__CLOUD_`, `L2__CO____`, `L2__HCHO__`, `L2__NO2___`, `L2__NP_BD3`, `L2__NP_BD6`, `L2__NP_BD7`, `L2__O3_TCL`, `L2__O3____`, `L2__SO2___`, ... |
 | s5p:processing_mode       | string        | One of: `NRTI`, `OFFL`, `RPRO`                               |
 | s5p:collection_identifier | string        | One of: `01`, `02`, `03`                                     |
 | s5p:spatial_resolution    | [number]      |                                                              |
