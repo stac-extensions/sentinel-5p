@@ -351,29 +351,17 @@
   "properties": {
     "datetime": "2024-03-25T12:49:42.500000Z",
     "platform": "Sentinel 5 Precursor",
-    "s5p:shape": [
+    "proj:shape": [
       373,
       448
     ],
-    "s5p:aer_lh": {
-      "input_band": [
-        "L1B_RA_BD6",
-        "L2__FRESCO",
-        "L2__AER_AI",
-        "L2__NP_BD6",
-        "L2__CLOUD_"
-      ],
-      "irradiance_accompanied": "L1B_IR_UVN",
-      "geolocation_grid_from_band": 6
-    },
     "instruments": [
       "TROPOMI"
     ],
     "end_datetime": "2024-03-25T12:52:19Z",
     "constellation": "Sentinel-5P",
     "start_datetime": "2024-03-25T12:47:06Z",
-    "s5p:product_name": "aer-lh",
-    "s5p:product_type": "L2__AER_LH",
+    "product:type": "L2__AER_LH",
     "sat:absolute_orbit": 33413,
     "s5p:processing_mode": "NRTI",
     "s5p:spatial_resolution": [
@@ -385,7 +373,9 @@
   },
   "stac_extensions": [
     "https://stac-extensions.github.io/sat/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/sentinel-5p/v0.1.0/schema.json"
+    "https://stac-extensions.github.io/sentinel-5p/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/product/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
   ],
   "stac_version": "1.0.0"
 }

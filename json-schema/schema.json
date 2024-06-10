@@ -60,24 +60,8 @@
     "require_any": {
       "$comment": "Please list all fields here so that we can force the existence of one of them in other parts of the schemas.",
       "anyOf": [
-        {"required": ["s5p:product_name"]},
-        {"required": ["s5p:product_type"]},
         {"required": ["s5p:processing_mode"]},
-        {"required": ["s5p:collection_identifier"]},
-        {"required": ["s5p:spatial_resolution"]},
-        {"required": ["s5p:aer_ai"]},
-        {"required": ["s5p:aer_lh"]},
-        {"required": ["s5p:ch4"]},
-        {"required": ["s5p:cloud"]},
-        {"required": ["s5p:co"]},
-        {"required": ["s5p:hcho"]},
-        {"required": ["s5p:no2"]},
-        {"required": ["s5p:npbd3"]},
-        {"required": ["s5p:npbd6"]},
-        {"required": ["s5p:npbd7"]},
-        {"required": ["s5p:o3"]},
-        {"required": ["s5p:o3_tcl"]},
-        {"required": ["s5p:so2"]}
+        {"required": ["s5p:collection_identifier"]}
       ]
     },
     "fields": {

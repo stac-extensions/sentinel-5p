@@ -343,11 +343,7 @@
   "properties": {
     "datetime": "2024-03-25T12:49:42.500000Z",
     "platform": "Sentinel 5 Precursor",
-    "s5p:cloud": {
-      "cloud_mode": "cal",
-      "geolocation_grid_from_band": 3
-    },
-    "s5p:shape": [
+    "proj:shape": [
       357,
       450
     ],
@@ -357,8 +353,7 @@
     "end_datetime": "2024-03-25T12:52:19Z",
     "constellation": "Sentinel-5P",
     "start_datetime": "2024-03-25T12:47:06Z",
-    "s5p:product_name": "cloud",
-    "s5p:product_type": "L2__CLOUD_",
+    "product:type": "L2__CLOUD_",
     "sat:absolute_orbit": 33413,
     "s5p:processing_mode": "NRTI",
     "s5p:spatial_resolution": [
@@ -370,7 +365,9 @@
   },
   "stac_extensions": [
     "https://stac-extensions.github.io/sat/v1.0.0/schema.json",
-    "https://stac-extensions.github.io/sentinel-5p/v0.1.0/schema.json"
+    "https://stac-extensions.github.io/sentinel-5p/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/product/v0.1.0/schema.json",
+    "https://stac-extensions.github.io/projection/v1.1.0/schema.json"
   ],
   "stac_version": "1.0.0"
 }

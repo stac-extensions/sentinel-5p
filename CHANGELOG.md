@@ -12,6 +12,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deprecated
 
+- s5p:product_name in favor of `product:type`
+- s5p:product_type in favor of `product:type`
+- s5p:spatial_resolution in favor or `spatial_resolution` (raster extension)
+- s5p:shape in favor or `proj:shape`
+- s5p:aer_ai
+- s5p:aer_lh
+- s5p:ch4
+- s5p:cloud
+- s5p:co
+- s5p:hcho
+- s5p:no2
+- s5p:npbd3
+- s5p:npbd6
+- s5p:npbd7
+- s5p:o3
+- s5p:o3_tcl
+- s5p:so2
+
 ### Removed
 
 ### Fixed
