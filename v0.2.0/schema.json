@@ -1,0 +1,251 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://stac-extensions.github.io/sentinel-5p/v0.2.0/schema.json#",
+  "title": "Sentinel-5P Extension",
+  "description": "STAC Sentinel-5P Extension for STAC Items and STAC Collection Summaries.",
+  "type": "object",
+  "required": [
+    "stac_extensions"
+  ],
+  "properties": {
+    "stac_extensions": {
+      "type": "array",
+      "contains": {
+        "const": "https://stac-extensions.github.io/sentinel-5p/v0.2.0/schema.json"
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "$comment": "This is the schema for STAC Items.",
+      "type": "object",
+      "required": [
+        "type",
+        "properties"
+      ],
+      "properties": {
+        "type": {
+          "const": "Feature"
+        },
+        "properties": {
+          "allOf": [
+            {
+              "$ref": "#/definitions/require_any"
+            },
+            {
+              "$ref": "#/definitions/fields"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "$comment": "This is the schema for STAC Collections, or more specifically only Collection Summaries in this case. By default, only checks the existence of the properties, but not the schema of the summaries.",
+      "type": "object",
+      "required": [
+        "type",
+        "summaries"
+      ],
+      "properties": {
+        "type": {
+          "const": "Collection"
+        },
+        "summaries": {
+          "$ref": "#/definitions/require_any"
+        }
+      }
+    }
+  ],
+  "definitions": {
+    "require_any": {
+      "$comment": "Please list all fields here so that we can force the existence of one of them in other parts of the schemas.",
+      "anyOf": [
+        {"required": ["s5p:processing_mode"]},
+        {"required": ["s5p:collection_identifier"]}
+      ]
+    },
+    "fields": {
+      "$comment": " Don't require fields here, do that above in the corresponding schema.",
+      "type": "object",
+      "properties": {
+        "s5p:product_name": {
+          "type": "string"
+        },
+        "s5p:product_type": {
+          "type": "string"
+        },
+        "s5p:processing_mode": {
+          "type": "string"
+        },
+        "s5p:collection_identifier": {
+          "type": "string"
+        },
+        "s5p:spatial_resolution": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "number"
+          }
+        },
+        "s5p:shape": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "integer"
+          }
+        },
+        "s5p:aer_ai": {
+          "$ref": "#/definitions/obj_aer_ai"
+        },
+        "s5p:aer_lh": {
+          "$ref": "#/definitions/obj_no2_etc"
+        },
+        "s5p:ch4": {
+          "$ref": "#/definitions/obj_no2_etc"
+        },
+        "s5p:cloud": {
+          "$ref": "#/definitions/obj_o3_etc"
+        },
+        "s5p:co": {
+          "$ref": "#/definitions/obj_no2_etc"
+        },
+        "s5p:hcho": {
+          "$ref": "#/definitions/obj_o3_etc"
+        },
+        "s5p:no2": {
+          "$ref": "#/definitions/obj_no2_etc"
+        },
+        "s5p:npbd3": {
+          "$ref": "#/definitions/obj_npbd"
+        },
+        "s5p:npbd6": {
+          "$ref": "#/definitions/obj_npbd"
+        },
+        "s5p:npbd7": {
+          "$ref": "#/definitions/obj_npbd"
+        },
+        "s5p:o3": {
+          "$ref": "#/definitions/obj_o3_etc"
+        },
+        "s5p:o3_tcl": {
+          "$ref": "#/definitions/obj_o3_tcl"
+        },
+        "s5p:so2": {
+          "$ref": "#/definitions/obj_o3_etc"
+        }
+      },
+      "patternProperties": {
+        "^(?!s5p:)": {}
+      },
+      "additionalProperties": false
+    },
+    "obj_aer_ai": {
+      "type": "object",
+      "minProperties": 1,
+      "properties": {
+        "input_band": {
+          "type": "string"
+        },
+        "irradiance_accompanied": {
+          "type": "string"
+        },
+        "geolocation_grid_from_band": {
+          "type": "integer"
+        }
+      }
+    },
+    "obj_no2_etc": {
+      "type": "object",
+      "minProperties": 1,
+      "properties": {
+        "input_band": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "irradiance_accompanied": {
+          "type": "string"
+        },
+        "geolocation_grid_from_band": {
+          "type": "integer"
+        }
+      }
+    },
+    "obj_o3_etc": {
+      "type": "object",
+      "minProperties": 1,
+      "properties": {
+        "cloud_mode": {
+          "type": "string"
+        },
+        "geolocation_grid_from_band": {
+          "type": "integer"
+        }
+      }
+    },
+    "obj_o3_tcl": {
+      "type": "object",
+      "minProperties": 1,
+      "properties": {
+        "shape_ccd": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "shape_csa": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "stratosphere_start_datetime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "stratosphere_end_datetime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "troposphere_start_datetime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "troposphere_end_datetime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "input_orbits": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "input_files": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "obj_npbd": {
+      "type": "object",
+      "properties": {
+        "analysed_s5p_band": {
+          "type": "integer"
+        },
+        "VIIRS_band": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "number_of_scaled_fov": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}
