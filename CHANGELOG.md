@@ -12,6 +12,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deprecated
 
+### Removed
+
+### Fixed
+
+## [0.2.0]
+
+### Deprecated
+
 - s5p:product_name in favor of `product:type`
 - s5p:product_type in favor of `product:type`
 - s5p:spatial_resolution in favor or `spatial_resolution` (raster extension)
@@ -30,15 +38,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - s5p:o3_tcl
 - s5p:so2
 
-### Removed
-
-### Fixed
-
 ## [0.1.0]
 
 ### Added
 
 - Create an initial definition of the extension.
 
-[Unreleased]: <https://github.com/stac-extensions/sentinel-5p/compare/v0.1.0...HEAD>
+[Unreleased]: <https://github.com/stac-extensions/sentinel-5p/compare/v0.2.0...HEAD>
+[0.2.0]: <https://github.com/stac-extensions/sentinel-5p/compare/v0.1.0...v0.2.0>
 [0.1.0]: <https://github.com/stac-extensions/sentinel-5p/tags/v0.1.0>

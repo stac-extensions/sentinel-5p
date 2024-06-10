@@ -1,7 +1,7 @@
 # Sentinel-5P Extension Specification
 
 - **Title:** Sentinel-5P
-- **Identifier:** <https://stac-extensions.github.io/sentinel-5p/v0.1.0/schema.json>
+- **Identifier:** <https://stac-extensions.github.io/sentinel-5p/v0.2.0/schema.json>
 - **Field Name Prefix:** s5p
 - **Scope:** Item
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
